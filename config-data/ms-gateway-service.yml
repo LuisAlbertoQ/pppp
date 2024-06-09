@@ -1,9 +1,6 @@
 server:
   port: 80
 
-
-
-
 eureka:
   client:
     serviceUrl:
@@ -11,17 +8,15 @@ eureka:
   instance:
     hostname: localhost
 
-
-
-
 spring:
   cloud:
     gateway:
       discovery:
         locator:
-          enable: true
+          enabled: true
       routes:
         - id: ms-gestionTesis-proyectoTesis-service
           uri: lb://ms-gestionTesis-proyectoTesis-service
           predicates:
             - Path=/proyectostesis/**, /doctesis/**, /tesistas/**
+
