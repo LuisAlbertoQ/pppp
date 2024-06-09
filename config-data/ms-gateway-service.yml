@@ -15,8 +15,8 @@ spring:
         locator:
           enabled: true
       routes:
-        - id: ms-gestionTesis-proyectoTesis-service
-          uri: lb://ms-gestionTesis-proyectoTesis-service
+        - id: ms-gestiontesis-proyectotesis-service
+          uri: lb://ms-gestiontesis-proyectotesis-service
           predicates:
-            - Path=/proyectostesis/**, /doctesis/**, /tesistas/{id}/**
+            - Path=/proyectostesis/**, /doctesis/**, /tesistas/**
 

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ms-gestionTesis-proyectoTesis-service
+    name: ms-gestiontesis-proyectotesis-service
   profiles:
     active: development
   config:
