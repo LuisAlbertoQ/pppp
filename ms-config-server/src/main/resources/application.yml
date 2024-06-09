@@ -12,3 +12,7 @@ spring:
           uri: https://github.com/LuisAlbertoQ/pppp.git # ruta del repositorio git
           searchPaths: config-data
           default-label: main
+  security:
+    user:
+      name: root
+      password: 123456
