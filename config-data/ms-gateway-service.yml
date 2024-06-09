@@ -18,5 +18,5 @@ spring:
         - id: ms-gestionTesis-proyectoTesis-service
           uri: lb://ms-gestionTesis-proyectoTesis-service
           predicates:
-            - Path=/proyectostesis/**, /doctesis/**, //tesistas/{id}/**
+            - Path=/proyectostesis/**, /doctesis/**, /tesistas/{id}/**
 
