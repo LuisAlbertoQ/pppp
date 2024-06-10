@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TesisDocumentoService {
@@ -26,18 +27,23 @@ public class TesisDocumentoService {
     private final String uploadDir = "uploads/";
 
     public TesisDocumento saveFile(MultipartFile file, Long idProyecto) throws IOException {
+        //Verifica si existe el archivo
+        String fileName = file.getOriginalFilename();
+        Optional<TesisDocumento> existingDocument = tesisDocumentoRepository.findByNombreDocumento(fileName);
+        if (existingDocument.isPresent()) {
+            throw new IllegalArgumentException("El Archivo ya Existe en la Base de Datos :x");
+        }
         // Crear el directorio de carga si no existe
         Path uploadPath = Paths.get(uploadDir);
         if (!Files.exists(uploadPath)) {
             Files.createDirectories(uploadPath);
         }
 
-        String fileName = file.getOriginalFilename();
         Path filePath = uploadPath.resolve(fileName);
         Files.copy(file.getInputStream(), filePath);
 
         ProyectoTesis proyectoTesis = proyectoTesisRepository.findById(idProyecto)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid project ID"));
+                .orElseThrow(() -> new IllegalArgumentException("ID no encontrado"));
 
         TesisDocumento tesisDocumento = new TesisDocumento();
         tesisDocumento.setProyectoTesis(proyectoTesis);

@@ -25,7 +25,7 @@ public class TesisDocumentoController {
     public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("idProyecto") Long idProyecto) {
         try {
             tesisDocumentoService.saveFile(file, idProyecto);
-            return ResponseEntity.status(HttpStatus.OK).body("Archivo Subido Exitosamente!");
+            return ResponseEntity.status(HttpStatus.OK).body("Archivo Subido Exitosamente! :D");
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error en Subir Archivo :(");
         } catch (IllegalArgumentException e) {
